@@ -1,12 +1,13 @@
 import './App.css';
 
 const dishes =[
-  'rice & dal','paneer tikka','chicken tikka',
+  'Rice & dal','Paneer tikka','Chicken tikka','Salmon'
 ];
-dishes.map((dish) => console.log(dish));
+// dishes.map((dish) => console.log(dish));
+const dishObjects = dishes.map((dish,i) => ({id:i,title:dish}));
+console.log("dishObjects",dishObjects);
 
 function Header(props) {
-  console.log("header props",props);
   return (
     <header>
      <p>This is the header, {props.name}</p>
@@ -15,14 +16,13 @@ function Header(props) {
 }
 
 function Main(props) {
-  console.log("main props",props);
   return (
     <section>
       <p>This is main,{props.adjective}</p>
 
       <ul style={{textAlign:"left"}}>
         {props.dishes.map((dish) =>(
-          <li>{dish}</li>
+          <li key={dish.id}>{dish.title}</li>
         ))}
       </ul>
 
@@ -30,7 +30,6 @@ function Main(props) {
   );
 }
 function Footer(props) {
-  console.log("footer props",props);
   return (
     <footer>
       <p>Copyright {props.year}</p>
@@ -42,7 +41,7 @@ function App() {
   return (
     <div className="App" >
      <Header name="Athira" />
-      <Main  adjective="amazing" dishes={dishes}/>
+      <Main  adjective="amazing" dishes={dishObjects}/>
      <Footer year={new Date().getFullYear()}/> 
     </div>
   );
