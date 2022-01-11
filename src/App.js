@@ -1,6 +1,9 @@
-import { Copyright } from '@mui/icons-material';
 import './App.css';
-import Menu from './Menu'
+
+const dishes =[
+  'rice & dal','paneer tikka','chicken tikka',
+];
+dishes.map((dish) => console.log(dish));
 
 function Header(props) {
   console.log("header props",props);
@@ -16,6 +19,13 @@ function Main(props) {
   return (
     <section>
       <p>This is main,{props.adjective}</p>
+
+      <ul style={{textAlign:"left"}}>
+        {props.dishes.map((dish) =>(
+          <li>{dish}</li>
+        ))}
+      </ul>
+
     </section>
   );
 }
@@ -23,7 +33,6 @@ function Footer(props) {
   console.log("footer props",props);
   return (
     <footer>
-      <p>This is the footer</p>
       <p>Copyright {props.year}</p>
     </footer>
   );
@@ -31,10 +40,10 @@ function Footer(props) {
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
      <Header name="Athira" />
-      <Main  adjective="amazing"/>
-     <Footer year={new Date().getFullYear()}/>
+      <Main  adjective="amazing" dishes={dishes}/>
+     <Footer year={new Date().getFullYear()}/> 
     </div>
   );
 }
