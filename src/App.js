@@ -1,16 +1,10 @@
 import './App.css';
-
-const dishes =[
-  'Rice & dal','Paneer tikka','Chicken tikka','Salmon'
-];
-// dishes.map((dish) => console.log(dish));
-const dishObjects = dishes.map((dish,i) => ({id:i,title:dish}));
-console.log("dishObjects",dishObjects);
+import demoImage from './image.jpeg';
 
 function Header(props) {
   return (
     <header>
-     <p>This is the header, {props.name}</p>
+    <h2>Test Page</h2>
     </header>
   );
 }
@@ -18,14 +12,8 @@ function Header(props) {
 function Main(props) {
   return (
     <section>
-      <p>This is main,{props.adjective}</p>
-
-      <ul style={{textAlign:"left"}}>
-        {props.dishes.map((dish) =>(
-          <li key={dish.id}>{dish.title}</li>
-        ))}
-      </ul>
-
+      <img src={demoImage} height={400} alt='demoImage'/>
+      <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" width={200} alt='google '/>
     </section>
   );
 }
@@ -40,8 +28,8 @@ function Footer(props) {
 function App() {
   return (
     <div className="App" >
-     <Header name="Athira" />
-      <Main  adjective="amazing" dishes={dishObjects}/>
+     <Header  />
+      <Main  />
      <Footer year={new Date().getFullYear()}/> 
     </div>
   );
